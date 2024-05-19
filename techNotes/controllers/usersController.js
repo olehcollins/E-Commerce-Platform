@@ -4,22 +4,26 @@ const Note = require("../models/Note");
 const asynHandler = require("express-async-handler");
 // we use this to encrypt the user password
 const bcrypt = require("bcrypt");
+const mongoose = require("mongoose");
 
-// @desc Delete a user
+//=================================GET ALL USERS==================================
+// @desc Get all users
 // @route /users
-// @method DELETE
+// @method GET
 // @access Private
 const getAllUsers = asynHandler(async (req, res) => {
   const users = await User.find().select("-password").lean();
-  if (!users) {
+  if (!users?.length) {
     return res.status(400).json({ message: "No users found" });
   }
   res.json(users);
 });
 
-// @desc Delete a user
+//=================================CREATE A USER==================================
+
+// @desc Create a user
 // @route /users
-// @method DELETE
+// @method POST
 // @access Private
 const createNewUser = asynHandler(async (req, res) => {
   const { username, password, roles } = req.body;
@@ -47,26 +51,29 @@ const createNewUser = asynHandler(async (req, res) => {
   }
 });
 
-// @desc Delete a user
+//=================================UPDATE A USERS==================================
+
+// @desc Update a user
 // @route /users
-// @method DELETE
+// @method PATCH
 // @access Private
 const updateUser = asynHandler(async (req, res) => {
-  const { id, username, roles, active, password } = req.body;
+  const { _id, username, roles, active, password } = req.body;
 
   // Confirm data
   if (
-    !id ||
+    !_id ||
     !username ||
-    !password ||
     !Array.isArray(roles) ||
     !roles.length ||
     typeof active !== "boolean"
   ) {
     return res.status(400).json({ message: "All fields are required" });
   }
-
-  const user = await User.findById(id).exec();
+  if (!mongoose.Types.ObjectId.isValid(_id)) {
+    return res.status(400).json({ message: "Invalid mongoose user ID" });
+  }
+  const user = await User.findById(_id).exec();
 
   if (!user) {
     return res.status(400).json({ message: "User not found" });
@@ -75,7 +82,7 @@ const updateUser = asynHandler(async (req, res) => {
   // Check for duplicate
   const duplicate = await User.findOne({ username }).lean().exec();
   // Allow updates to the original user
-  if (duplicate && duplicate?._id.toString() !== id) {
+  if (duplicate && duplicate?._id.toString() !== _id) {
     return res.status(409).json({ message: "Duplicate username" });
   }
   user.username = username;
@@ -91,22 +98,24 @@ const updateUser = asynHandler(async (req, res) => {
   res.json({ message: `${updatedUser.username} updated` });
 });
 
+//=================================DELETE A USERS==================================
+
 // @desc Delete a user
 // @route /users
 // @method DELETE
 // @access Private
 const deleteUser = asynHandler(async (req, res) => {
-  const { id } = req.body;
-  if (!id) {
+  const { _id } = req.body;
+  if (!_id) {
     res.status(400).json({ message: "User ID Required" });
   }
-  const notes = await Note.findOne({ user: id }).lean().exec();
+  const notes = await Note.findOne({ user: _id }).lean().exec();
 
   if (notes?.length) {
     return res.status(400).json({ message: "User has a assigned notes" });
   }
 
-  const user = await User.findById(id).exec();
+  const user = await User.findById(_id).exec();
 
   if (!user) {
     return res.status(400).json({ message: "User not found" });
