@@ -16,6 +16,7 @@ const startServer = async () => {
   const { logEvents } = require("./middleware/logger.js");
   const rootRoute = require("./routes/root.js");
   const userRoutes = require("./routes/userRoutes.js");
+  const noteRoutes = require("./routes/noteRoutes.js");
   const PORT = process.env.PORT || 3500;
 
   console.log(process.env.NODE_ENV);
@@ -35,6 +36,8 @@ const startServer = async () => {
   app.use("/", rootRoute);
   // this is the catchall middleware for all request that were not handled by the previous middleware
   app.use("/users", userRoutes);
+
+  app.use("/notes", noteRoutes);
 
   app.all("*", (req, res) => {
     res.status(404);
