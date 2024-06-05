@@ -1,0 +1,13 @@
+.form .payment-f {
+	.p-choice {
+		display: flex;
+		flex-direction: row;
+		gap: 2rem;
+	}
+	input {
+		cursor: pointer;
+	}
+	label {
+		font-size: 1.3rem;
+	}
+}

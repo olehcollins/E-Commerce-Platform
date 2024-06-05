@@ -1,0 +1,51 @@
+.form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.signin-f {
+	border: 2px solid var(--text);
+
+	width: 30rem;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	padding: 3rem;
+	border-radius: 0.5rem;
+	overflow: hidden;
+}
+
+.input-f {
+	padding: 1rem;
+	font-size: 1.2rem;
+	border-radius: 1rem;
+	color: black;
+	border: 2px solid var(--text);
+}
+
+.signin-btn {
+	padding: 1rem 2rem;
+	font-size: 1.1rem;
+	border-radius: 1rem;
+	border: none;
+	background-color: var(--custom-blue);
+	color: var(--forever-w);
+	cursor: pointer;
+	transition: 0.2s ease-in-out;
+	font-weight: bold;
+}
+
+.signin-btn:hover {
+	background-color: var(--rose);
+	transform: translateY(-5px);
+}
+
+.create-acc {
+	font-size: 1.1rem;
+
+	a {
+		color: var(--custom-blue);
+	}
+}

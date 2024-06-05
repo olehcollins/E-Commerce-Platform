@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../../MERN-stack/Node.js"
+		}
+	],
+	"settings": {}
+}

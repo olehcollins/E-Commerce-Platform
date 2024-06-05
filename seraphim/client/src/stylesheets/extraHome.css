@@ -1,0 +1,17 @@
+#laptops-list {
+	gap: 1rem;
+	padding: 0.5rem;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+	.product-card {
+		width: 49% !important;
+	}
+}
+
+@media screen and (max-width: 900px) {
+	#laptops-list {
+		.product-card {
+			width: 100% !important;
+		}
+	}
+}

@@ -1,0 +1,17 @@
+.checkout-steps {
+	display: flex;
+	/* gap: 3rem; */
+	margin-bottom: 2rem;
+}
+
+.checkout-steps > div {
+	border-bottom: 0.2rem solid #a0a0a0;
+	color: #a0a0a0;
+	font-size: 1.3rem;
+	font-weight: bold;
+	padding: 0.2rem 2rem;
+}
+.checkout-steps > div.active {
+	border-bottom: 0.2rem solid #f08000;
+	color: #f08000;
+}
