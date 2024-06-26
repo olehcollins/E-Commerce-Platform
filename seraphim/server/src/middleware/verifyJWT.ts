@@ -4,6 +4,8 @@ import { JwtPayload } from "../types/JwtPayload";
 
 export const verifyJWT = (req: Request, res: Response, next: NextFunction) => {
 	const authHeader = req.headers.authorization || req.headers.Authorization;
+	// console.log(authHeader);
+	// return;
 
 	if (Array.isArray(authHeader)) {
 		return res.sendStatus(401); // Authorization header should not be an array

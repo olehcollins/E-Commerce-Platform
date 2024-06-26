@@ -96,7 +96,7 @@ export default function ShippingAddressPage() {
 					/>
 					<div className="mb-3">
 						<button className="signin-btn" type="submit">
-							Submit
+							Continue
 						</button>
 					</div>
 				</form>

@@ -52,7 +52,7 @@ export class Order {
 	public shippingAddress?: ShippingAddress;
 
 	@prop({ ref: User })
-	public user?: Ref<User>;
+	public customer!: Ref<User>;
 
 	@prop({ required: true })
 	public paymentMethod!: string;

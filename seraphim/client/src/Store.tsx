@@ -37,6 +37,7 @@ type Action =
 	| { type: "CART_ADD_ITEM"; payload: CartItem }
 	| { type: "ADD_T0_WISHLIST"; payload: ProductType }
 	| { type: "CART_REMOVE_ITEM"; payload: CartItem }
+	| { type: "CART_CLEAR" }
 	| { type: "WISHLIST_REMOVE_ITEM"; payload: ProductType }
 	| { type: "USER_SIGNIN"; payload: UserInfo }
 	| { type: "USER_SIGNOUT" }
@@ -68,6 +69,8 @@ function reducer(state: AppState, action: Action): AppState {
 			localStorage.setItem("cartItems", JSON.stringify(cartItems));
 			return { ...state, cart: { ...state.cart, cartItems } };
 		}
+		case "CART_CLEAR":
+			return { ...state, cart: { ...state.cart, cartItems: [] } };
 		case "ADD_T0_WISHLIST": {
 			const newItem = action.payload;
 			if (state.wishlist.length < 1) return { ...state, wishlist: [newItem] };
@@ -100,6 +103,7 @@ function reducer(state: AppState, action: Action): AppState {
 				...state,
 				cart: { ...state.cart, paymentMethod: action.payload },
 			};
+
 		case "USER_SIGNIN":
 			return { ...state, userInfo: action.payload };
 

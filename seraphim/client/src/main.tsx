@@ -28,6 +28,9 @@ import SignupPage from "./pages/SignupPage.tsx";
 import UpdateUser from "./pages/UpdateUserPage.tsx";
 import ShippingAddressPage from "./pages/ShippingAdressPage.tsx";
 import PaymentMethodPage from "./pages/PaymentPage.tsx";
+import { ProtectedRoute } from "./components/ProctectedRoute.tsx";
+import PlaceOrderPage from "./pages/PlaceOrderPage.tsx";
+import OrderPage from "./pages/OrderPage.tsx";
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -44,8 +47,12 @@ const router = createBrowserRouter(
 				<Route path="/signup" element={<SignupPage />} />
 				<Route path="/customer/update" element={<UpdateUser />} />
 				<Route path="/cart" element={<CartPage />} />
-				<Route path="/shipping" element={<ShippingAddressPage />} />
-				<Route path="/payment" element={<PaymentMethodPage />} />
+				<Route path="" element={<ProtectedRoute />}>
+					<Route path="/shipping" element={<ShippingAddressPage />} />
+					<Route path="/payment" element={<PaymentMethodPage />} />
+					<Route path="/placeorder" element={<PlaceOrderPage />} />
+					<Route path="/order/:id" element={<OrderPage />} />
+				</Route>
 				<Route path="*" element={<NotFoundPage />} />
 			</Route>
 			<Route path="*" element={<NotFoundPage />} />

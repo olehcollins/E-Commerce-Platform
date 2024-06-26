@@ -4,7 +4,7 @@ import { verifyJWT } from "../middleware/verifyJWT";
 
 const orderRouter = express.Router();
 
-orderRouter.route("/").get(verifyJWT, getAllOrders).post(verifyJWT, createOrder);
-orderRouter.route("/:id").get(getOrder);
+orderRouter.route("/").post(verifyJWT, createOrder).get(verifyJWT, getAllOrders);
+orderRouter.route("/:id").get(verifyJWT, getOrder);
 
 export default orderRouter;

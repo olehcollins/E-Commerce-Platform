@@ -56,9 +56,9 @@ export default function PaymentMethodPage() {
 						/>
 					</div>
 
-					<div className="mb-3">
+					<div>
 						<button className="signin-btn" type="submit">
-							Submit
+							Continue
 						</button>
 					</div>
 				</form>
