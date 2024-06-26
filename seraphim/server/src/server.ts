@@ -20,6 +20,7 @@ import corsOptions from "../config/corsOptions";
 import { logger } from "./middleware/logEvents";
 import { errorHandler } from "./middleware/errorHandler";
 import orderRouter from "./routes/orders";
+import { keyRouter } from "./routes/key";
 
 const PORT = process.env.PORT || 3500;
 const app = express();
@@ -44,6 +45,7 @@ app.use("/auth", authRoute);
 app.use("/refresh", refreshRouter);
 app.use("/signout", logOutRouter);
 app.use("/orders", orderRouter);
+app.use("/keys", keyRouter);
 
 app.use("/products", productRouter);
 

@@ -138,7 +138,6 @@ export default function PlaceOrderPage() {
 
 						<button
 							className="order-btn"
-							type="button"
 							onClick={placeOrderHandler}
 							disabled={cart.cartItems.length === 0 || isPending}
 						>
