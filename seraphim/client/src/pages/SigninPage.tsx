@@ -30,6 +30,7 @@ const SigninPage = () => {
 				email,
 				password,
 			});
+			console.log(data);
 			dispatch({ type: "USER_SIGNIN", payload: data });
 			localStorage.setItem("userInfo", JSON.stringify(data));
 			navigate(redirect);

@@ -19,7 +19,7 @@ import connectDB from "../config/dbConnect";
 import corsOptions from "../config/corsOptions";
 import { logger } from "./middleware/logEvents";
 import { errorHandler } from "./middleware/errorHandler";
-import { verifyJWT } from "./middleware/verifyJWT";
+import orderRouter from "./routes/orders";
 
 const PORT = process.env.PORT || 3500;
 const app = express();
@@ -43,9 +43,9 @@ app.use("/users", userRouter);
 app.use("/auth", authRoute);
 app.use("/refresh", refreshRouter);
 app.use("/signout", logOutRouter);
+app.use("/orders", orderRouter);
 
 app.use("/products", productRouter);
-app.use(verifyJWT);
 
 //request errors
 app.all("*", (req: Request, res: Response) => {

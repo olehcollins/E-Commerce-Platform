@@ -49,3 +49,14 @@
 		color: var(--custom-blue);
 	}
 }
+
+.d-account {
+	font-size: 1.1rem;
+	margin-top: 1rem;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.d-account:hover {
+	color: var(--rose);
+}

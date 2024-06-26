@@ -69,7 +69,7 @@ const Header: React.FC<Props> = ({ themeSwitch, mode, cartItems, wishlist }) => 
 				.quality("auto")
 				.resize(auto().gravity(autoGravity()).width(40).height(40));
 		setImage(img);
-		console.log(userInfo.profileImage);
+		// console.log(userInfo.profileImage);
 	}, [userInfo]);
 
 	return (

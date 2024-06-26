@@ -16,3 +16,8 @@ export type UpdateUserInfo = {
 	refreshToken: string;
 	profileImage?: string;
 };
+
+export type deleteAccountInfo = {
+	id: string;
+	refreshToken: string;
+};

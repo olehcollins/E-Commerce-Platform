@@ -20,6 +20,7 @@ export const handleLogin = async (req: Request, res: Response) => {
 		console.log(result);
 		// http cookie is not available to js: its more secure
 		// secure: true - only serves on https( would be added in production )
+		// qnok5evkkxgxam7csskt;
 
 		res.json({
 			id: user._id,
@@ -29,7 +30,7 @@ export const handleLogin = async (req: Request, res: Response) => {
 			profileImage: user.profileImage,
 		});
 	} else {
-		console.log("test");
+		// console.log(req.body);
 		res.sendStatus(401);
 	}
 };

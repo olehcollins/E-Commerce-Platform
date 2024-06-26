@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import LoadingBox from "../components/LoadingBox";
-import { useUpdateMutation } from "../hooks/userHooks";
+import { useUpdateMutation, useDeleteMutation } from "../hooks/userHooks";
 import { Store } from "../Store";
 import { ApiError } from "../types/ApiError";
 import { getError } from "../utiles";
@@ -23,9 +23,33 @@ const UpdateUser = () => {
 	const { state, dispatch } = useContext(Store);
 
 	const { mutateAsync: update, isPending } = useUpdateMutation();
+	const { mutateAsync: deleteAccount } = useDeleteMutation();
 	const { userInfo } = state;
 	const refreshToken = userInfo!.refreshToken;
 	const id = userInfo!.id;
+
+	const handleDelete = async () => {
+		if (!refreshToken) {
+			console.error("Refresh token is required");
+			return;
+		}
+		try {
+			const data = await deleteAccount({
+				id,
+				refreshToken,
+			});
+			if (data) {
+				dispatch({ type: "USER_SIGNOUT" });
+				localStorage.removeItem("userInfo");
+				localStorage.removeItem("cartItems");
+				localStorage.removeItem("shippingAddress");
+				localStorage.removeItem("paymentMethod");
+				window.location.href = "/";
+			}
+		} catch (error) {
+			console.error("Error deleting account:", error);
+		}
+	};
 
 	const submitHandler = async (e: React.SyntheticEvent) => {
 		e.preventDefault();
@@ -123,6 +147,9 @@ const UpdateUser = () => {
 					</button>
 				</div>
 			</form>
+			<strong className="d-account" onClick={handleDelete}>
+				Delete Account
+			</strong>
 			{isPending && <LoadingBox />}
 		</div>
 	);

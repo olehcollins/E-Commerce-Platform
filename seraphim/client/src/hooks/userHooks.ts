@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import apiClient from "../apiClient";
-import { UpdateUserInfo, UserInfo } from "../types/UserInfo";
+import { UpdateUserInfo, UserInfo, deleteAccountInfo } from "../types/UserInfo";
 
 export const useSigninMutation = () =>
 	useMutation({
@@ -59,5 +59,19 @@ export const useUpdateMutation = () =>
 						},
 					}
 				)
+			).data,
+	});
+export const useDeleteMutation = () =>
+	useMutation({
+		mutationFn: async (userInfo: deleteAccountInfo) =>
+			(
+				await apiClient.delete("/users/customer", {
+					data: {
+						id: userInfo.id,
+					},
+					headers: {
+						Authorization: `Bearer ${userInfo.refreshToken}`,
+					},
+				})
 			).data,
 	});
