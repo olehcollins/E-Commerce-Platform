@@ -6,7 +6,7 @@ export const SearchBox = () => {
 	const [searchTerm, setSearchTerm] = useState("");
 	const navigate = useNavigate();
 
-	const handleChange = (e) => {
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setSearchTerm(e.target.value);
 	};
 
