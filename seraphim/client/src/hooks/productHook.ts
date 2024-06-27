@@ -13,3 +13,10 @@ export const useGetProductQuery = (id: string) =>
 		queryKey: ["product", id],
 		queryFn: async () => (await apiClient.get<ProductType>(`/products/${id}`)).data,
 	});
+
+export const useSearchProductQuery = (searchTerm: string) =>
+	useQuery({
+		queryKey: ["product", searchTerm],
+		queryFn: async () =>
+			(await apiClient.get<ProductType[]>(`/products/search?searchTerm=${searchTerm}`)).data,
+	});

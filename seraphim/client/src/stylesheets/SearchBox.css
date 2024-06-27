@@ -1,0 +1,31 @@
+.navbar-search {
+	display: flex;
+	align-items: center;
+	min-width: 14rem;
+}
+
+.navbar-search input[type="text"] {
+	padding: 8px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	margin-right: 0.5rem;
+	text-align: start;
+	padding: 0.7rem;
+	min-width: 24rem;
+	font-size: 1rem;
+}
+
+.navbar-search button {
+	padding: 8px 12px;
+	background-color: var(--custom-blue);
+	color: var(--forever-w);
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	padding: 0.8rem 2rem;
+	transition: 0.2s ease-in-out;
+}
+
+.navbar-search button:hover {
+	background-color: rgba(0, 128, 255, 0.93);
+}

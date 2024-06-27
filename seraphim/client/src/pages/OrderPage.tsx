@@ -211,7 +211,7 @@ export default function OrderPage() {
 									<div>
 										<PayPalButtons {...paypalbuttonTransactionProps}></PayPalButtons>
 										<button className="order-btn" onClick={testPayHandler}>
-											Pay
+											Test Pay
 										</button>
 									</div>
 								)}

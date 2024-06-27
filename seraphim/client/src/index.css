@@ -214,6 +214,7 @@ header {
 			text-align: center;
 			border-radius: 0.5rem;
 			box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+			min-width: 6rem;
 
 			a {
 				padding: 0.7rem;

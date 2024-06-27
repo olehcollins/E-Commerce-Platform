@@ -1,14 +1,39 @@
 import ProductModel from "../models/Product";
 import { Request, Response } from "express";
 
-const getAllProducts = async (_req: Request, res: Response) => {
+export const getAllProducts = async (_req: Request, res: Response) => {
 	const products = await ProductModel.find();
 	if (!products) return res.status(204).json({ message: "No products found" });
 
 	res.status(200).json(products);
 };
 
-const createProduct = async (req: Request, res: Response) => {
+export const searchProducts = async (req: Request, res: Response) => {
+	const { searchTerm } = req.query;
+	if (!searchTerm || typeof searchTerm !== "string") {
+		return res.status(400).json({ message: "Invalid search term" });
+	}
+	try {
+		const regex = new RegExp(searchTerm, "i"); // Case-insensitive search
+
+		const products = await ProductModel.find({
+			$or: [
+				{ name: { $regex: regex } },
+				{ category: { $regex: regex } },
+				{ description: { $regex: regex } },
+			],
+		});
+
+		if (!products) return res.status(204).json({ message: "No products found" });
+		console.log(products);
+		res.status(200).json(products);
+	} catch (error) {
+		console.error("Error searching products:", error);
+		res.status(500).json({ message: "Server error" });
+	}
+};
+
+export const createProduct = async (req: Request, res: Response) => {
 	if (!req?.body) return res.status(400).send({ message: "product details required" });
 
 	try {
@@ -19,7 +44,7 @@ const createProduct = async (req: Request, res: Response) => {
 	}
 };
 
-const updateProduct = async (req: Request, res: Response) => {
+export const updateProduct = async (req: Request, res: Response) => {
 	if (!req?.body) return res.status(400).json({ message: "product details required" });
 
 	try {
@@ -39,7 +64,7 @@ const updateProduct = async (req: Request, res: Response) => {
 	}
 };
 
-const deleteProduct = async (req: Request, res: Response) => {
+export const deleteProduct = async (req: Request, res: Response) => {
 	try {
 		const deletedProduct = await ProductModel.findByIdAndDelete(req.params.id);
 
@@ -53,7 +78,7 @@ const deleteProduct = async (req: Request, res: Response) => {
 	}
 };
 
-const getProduct = async (req: Request, res: Response) => {
+export const getProduct = async (req: Request, res: Response) => {
 	if (!req?.params?.id) return res.status(400).json({ message: "product id required" });
 	const product = await ProductModel.findOne({ _id: req.params.id }).exec();
 
@@ -62,5 +87,3 @@ const getProduct = async (req: Request, res: Response) => {
 
 	res.status(200).json(product);
 };
-
-module.exports = { getAllProducts, createProduct, updateProduct, deleteProduct, getProduct };
