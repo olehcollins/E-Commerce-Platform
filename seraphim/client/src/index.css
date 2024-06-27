@@ -201,6 +201,42 @@ header {
 		}
 	}
 
+	.profile-img {
+		position: relative;
+		transition: 0.2s ease-in-out;
+		cursor: pointer;
+
+		.dropdown-content {
+			display: none;
+			position: absolute;
+			z-index: 1;
+			background-color: var(--custom-blue);
+			text-align: center;
+			border-radius: 0.5rem;
+			box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+
+			a {
+				padding: 0.7rem;
+				font-size: 0.7rem;
+				color: var(--forever-w);
+				border-radius: 0.5rem;
+				display: block;
+				text-decoration: none;
+			}
+			a:hover {
+				background-color: var(--rose);
+			}
+		}
+	}
+
+	.profile-img:hover .dropdown-content {
+		display: block;
+	}
+
+	.profile-img:hover {
+		transform: translateY(-4px);
+	}
+
 	.profile-img img {
 		border-radius: 50%;
 	}

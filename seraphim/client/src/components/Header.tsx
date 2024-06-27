@@ -123,9 +123,14 @@ const Header: React.FC<Props> = ({ themeSwitch, mode, cartItems, wishlist }) => 
 						</svg>
 					</Link>
 					{userInfo && typeof image !== "string" && (
-						<Link to={"/customer/update"} className="profile-img">
+						<div className="profile-img">
 							<AdvancedImage cldImg={image} />
-						</Link>
+
+							<div className="dropdown-content">
+								<a href="/orders">Order History</a>
+								<a href="customer/update">Edit Profile</a>
+							</div>
+						</div>
 					)}
 					<button
 						aria-label="theme-toggle btn"

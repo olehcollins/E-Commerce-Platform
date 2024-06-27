@@ -70,7 +70,7 @@ export default function OrderPage() {
 					purchase_units: [
 						{
 							amount: {
-								value: order!.totalPrice.toString(),
+								value: "0.3",
 								currency_code: "GBP",
 							},
 						},

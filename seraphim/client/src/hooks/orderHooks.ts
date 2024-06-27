@@ -44,3 +44,9 @@ export const useGetOrderDetailsQuery = (id: string) =>
 		queryKey: ["orders", id],
 		queryFn: async () => (await apiClient.get<Order>(`/orders/${id}`)).data,
 	});
+
+export const useGetOrderHistoryQuery = () =>
+	useQuery({
+		queryKey: ["order-history"],
+		queryFn: async () => (await apiClient.get<Order[]>(`/orders`)).data,
+	});

@@ -22,6 +22,7 @@ export const verifyJWT = (req: Request, res: Response, next: NextFunction) => {
 			if (err) return res.status(403).json(err); // invalid token
 			req.body.email = decoded.email;
 			req.body.isAdmin = decoded.isAdmin;
+			req.body.customer = decoded;
 			next();
 		}
 	);

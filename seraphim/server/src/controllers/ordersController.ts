@@ -2,8 +2,8 @@ import { OrderModel } from "../models/Order";
 import { Request, Response } from "express";
 import { UserModel } from "../models/User";
 
-export const getAllOrders = async (_req: Request, res: Response) => {
-	const orders = await OrderModel.find();
+export const getAllOrders = async (req: Request, res: Response) => {
+	const orders = await OrderModel.find({ customer: req.body.customer });
 	if (!orders) return res.status(204).json({ message: "No orders found" });
 
 	res.status(200).json(orders);
@@ -25,7 +25,7 @@ export const createOrder = async (req: Request, res: Response) => {
 			taxPrice: req.body.taxPrice,
 			totalPrice: req.body.totalPrice,
 		});
-		console.log(newOrder);
+
 		res.status(201).send({ message: `new order created`, order: newOrder });
 	} catch (error) {
 		console.error(error);
