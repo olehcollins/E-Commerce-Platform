@@ -8,16 +8,16 @@ import path from "path";
 export const logEvent = async (message: string, logName: string) => {
 	const dateTime = `${format(new Date(), "dd/MM/yyyy-HH:mm:ss")}`;
 	const logItem = `date-time: ${dateTime}\t id: ${uuid()}\t ${message}\n`;
-	const chalk = (await import("chalk")).default;
+	// const chalk = (await import("chalk")).default;
 
 	try {
 		if (!fs.existsSync(path.join(__dirname, "..", "logs"))) {
 			fs.mkdir(path.join(__dirname, "..", "logs"), (err) => {
-				err ? console.log(err) : console.log(chalk.blueBright("logs Directory created"));
+				err ? console.log(err) : console.log("logs Directory created");
 			});
 		}
 		await fsPromises.appendFile(path.join(__dirname, "..", "logs", logName), logItem);
-		console.log(chalk.cyanBright(logItem));
+		// console.log(chalk.cyanBright(logItem));
 	} catch (error) {
 		console.log(error);
 	}
