@@ -1,0 +1,17 @@
+{
+	"name": "seraphim",
+	"version": "1.0.0",
+	"description": "e-commerce platform",
+	"main": "index.js",
+	"scripts": {
+		"build": "cd server && npm install && npm run build  && cd ../client && npm install && npm run build",
+		"start": "TG_ALLOW_MIXED=ALLOW  node server/build/server.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "(https://github.com/olehcollins/MERN-stack-Projects)"
+	},
+	"author": "oleh collins",
+	"license": "ISC"
+}

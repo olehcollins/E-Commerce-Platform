@@ -6,6 +6,7 @@ import cors from "cors";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
+import path from "path";
 
 //routes
 import { authRoute } from "./routes/auth";
@@ -49,12 +50,10 @@ app.use("/keys", keyRouter);
 
 app.use("/products", productRouter);
 
-//request errors
-app.all("*", (req: Request, res: Response) => {
-	res.status(404).req.accepts("json")
-		? res.json({ error: "404 Not Found" })
-		: res.type("txt").send("404 Not Found");
-});
+app.use(express.static(path.join(__dirname, "../../client/dist")));
+app.get("*", (req: Request, res: Response) =>
+	res.sendFile(path.join(__dirname, "../../client/index.html"))
+);
 
 //server errors
 app.use(errorHandler);

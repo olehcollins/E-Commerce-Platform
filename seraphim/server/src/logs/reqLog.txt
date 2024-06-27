@@ -657,3 +657,4 @@ date-time: 27/06/2024-17:36:38	 id: 9fdf2de2-be13-40ab-adec-e30a785efa9a	 method
 date-time: 27/06/2024-17:46:59	 id: 6216582c-8af2-4aa5-8726-5312d7a48fe0	 method: GET	 origin: http://localhost:5173	 url: /products
 date-time: 27/06/2024-17:47:11	 id: 061f39dd-0b88-4f8a-b244-9240b30eb3bd	 method: GET	 origin: http://localhost:5173	 url: /orders
 date-time: 27/06/2024-17:47:19	 id: bbb9c14e-fbb9-4e35-8954-ad0e15f21ab2	 method: GET	 origin: http://localhost:5173	 url: /products
+date-time: 27/06/2024-18:06:51	 id: da508cec-ca9c-4e4b-978e-a263cc31abc7	 method: GET	 origin: http://localhost:5173	 url: /products
