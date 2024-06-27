@@ -1,12 +1,11 @@
 //packages
 import dotenv from "dotenv";
 dotenv.config();
-import express, { Request, Response } from "express";
+import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
-import path from "path";
 
 //routes
 import { authRoute } from "./routes/auth";
@@ -49,6 +48,10 @@ app.use("/orders", orderRouter);
 app.use("/keys", keyRouter);
 
 app.use("/products", productRouter);
+
+app.get("/", (_req, res) => {
+	res.send("seraphime server");
+});
 
 //server errors
 app.use(errorHandler);

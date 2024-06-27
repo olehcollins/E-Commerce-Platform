@@ -677,3 +677,6 @@ date-time: 27/06/2024-21:46:56	 id: c1a1c898-dd1a-48db-8668-3674f2a92311	 method
 date-time: 27/06/2024-21:47:01	 id: 4d6aa45f-90fa-429e-bb97-19f0d478074e	 method: GET	 origin: https://seraphim-lusb2af25-oleh-collins-projects.vercel.app	 url: /products
 date-time: 27/06/2024-21:49:25	 id: 3c1bda38-4d89-41f7-bdac-2a0e183d79e2	 method: GET	 origin: https://seraphim-lusb2af25-oleh-collins-projects.vercel.app	 url: /products
 date-time: 27/06/2024-22:11:33	 id: 162d2c23-0d22-4c9e-93d1-756de020e6b7	 method: GET	 origin: http://localhost:5173	 url: /products
+date-time: 27/06/2024-22:22:32	 id: 864f9bd7-dccb-4b07-aaee-f0e94d06eff9	 method: GET	 origin: https://seraphim-lusb2af25-oleh-collins-projects.vercel.app	 url: /products
+date-time: 27/06/2024-22:38:52	 id: f85f5d92-67b1-4723-9f74-63a593ba295f	 method: GET	 origin: https://seraphim-lusb2af25-oleh-collins-projects.vercel.app	 url: /products
+date-time: 27/06/2024-22:38:56	 id: 57ee75b7-02bc-403a-ada8-4e993924624c	 method: GET	 origin: https://seraphim-lusb2af25-oleh-collins-projects.vercel.app	 url: /products

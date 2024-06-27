@@ -8,7 +8,5 @@
 		"experimentalDecorators": true,
 		"emitDecoratorMetadata": true,
 		"typeRoots": ["./node_modules/@types", "./types"]
-	},
-	"include": ["src/**/*.ts", ".env", "src/test.ts"],
-	"exclude": ["node_modules"]
+	}
 }

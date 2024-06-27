@@ -2,7 +2,7 @@ import axios from "axios";
 
 // const baseURL =
 // 	import.meta.env.VITE_NODE_ENV === "development" ? import.meta.env.VITE_API_BASE_URL : "/";
-const baseURL = "http://localhost:4000/";
+const baseURL = "https://lit-mountain-17642-0035c22f4149.herokuapp.com";
 
 const apiClient = axios.create({
 	baseURL,
