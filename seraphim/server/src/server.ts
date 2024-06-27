@@ -50,11 +50,6 @@ app.use("/keys", keyRouter);
 
 app.use("/products", productRouter);
 
-app.use(express.static(path.join(__dirname, "../../client/dist")));
-app.get("*", (req: Request, res: Response) =>
-	res.sendFile(path.join(__dirname, "../../client/index.html"))
-);
-
 //server errors
 app.use(errorHandler);
 

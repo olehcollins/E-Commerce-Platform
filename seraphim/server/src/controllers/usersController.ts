@@ -3,14 +3,14 @@ import { Request, Response } from "express";
 import { generateRefreshToken } from "../utils/jwt";
 import bcrypt from "bcryptjs";
 
-const getAllUsers = async (_req: Request, res: Response) => {
+export const getAllUsers = async (_req: Request, res: Response) => {
 	const users = await UserModel.find();
 	if (!users) return res.status(204).json({ message: "No users found" });
 
 	res.status(200).json(users);
 };
 
-const createUser = async (req: Request, res: Response) => {
+export const createUser = async (req: Request, res: Response) => {
 	const { email, password, name, profileImage } = req.body;
 	if (!email || !password || !name)
 		return res.status(400).json({ message: "name, email and password required" });
@@ -34,7 +34,7 @@ const createUser = async (req: Request, res: Response) => {
 	}
 };
 
-const updateUser = async (req: Request, res: Response) => {
+export const updateUser = async (req: Request, res: Response) => {
 	if (!req?.body) return res.status(400).json({ message: "user details required" });
 	try {
 		let newInfo = { ...req.body };
@@ -64,7 +64,7 @@ const updateUser = async (req: Request, res: Response) => {
 	}
 };
 
-const deleteUser = async (req: Request, res: Response) => {
+export const deleteUser = async (req: Request, res: Response) => {
 	try {
 		const deletedUser = await UserModel.findByIdAndDelete(req.body.id);
 
@@ -77,7 +77,7 @@ const deleteUser = async (req: Request, res: Response) => {
 		res.status(500).send({ message: "Error deleting user", error });
 	}
 };
-const getUser = async (req: Request, res: Response) => {
+export const getUser = async (req: Request, res: Response) => {
 	const { email } = req.body;
 	if (!email) return res.status(400).json({ message: "email required" });
 	const user = await UserModel.findOne({ email: req.body.email }).exec();
@@ -87,5 +87,3 @@ const getUser = async (req: Request, res: Response) => {
 
 	res.json({ user: user });
 };
-
-module.exports = { getAllUsers, createUser, updateUser, deleteUser, getUser };

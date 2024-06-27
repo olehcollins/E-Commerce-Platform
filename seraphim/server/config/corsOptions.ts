@@ -1,6 +1,9 @@
 import { CorsOptions } from "cors";
 
-const allowedOrigins: string[] = ["http://localhost:5173"];
+const allowedOrigins: string[] = [
+	"http://localhost:5173",
+	"https://seraphim-lusb2af25-oleh-collins-projects.vercel.app",
+];
 
 const corsOptions: CorsOptions = {
 	origin: (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) => {
