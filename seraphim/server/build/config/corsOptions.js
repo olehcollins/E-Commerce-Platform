@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const allowedOrigins = [
     "https://swiftshop-mu.vercel.app",
     "https://swiftshop-203lfgixu-oleh-collins-projects.vercel.app",
+    "https://swiftshop-eight.vercel.app",
 ];
 const corsOptions = {
     origin: (origin, callback) => {

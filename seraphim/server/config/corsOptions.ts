@@ -3,6 +3,7 @@ import { CorsOptions } from "cors";
 const allowedOrigins: string[] = [
 	"https://swiftshop-mu.vercel.app",
 	"https://swiftshop-203lfgixu-oleh-collins-projects.vercel.app",
+	"https://swiftshop-eight.vercel.app",
 ];
 
 const corsOptions: CorsOptions = {

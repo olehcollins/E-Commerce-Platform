@@ -6,6 +6,7 @@ import { useGetOrderHistoryQuery } from "../hooks/orderHooks";
 import { getError } from "../utiles";
 import { ApiError } from "../types/ApiError";
 import "../stylesheets/OrderHistoryPage.css";
+import { Link } from "react-router-dom";
 
 export default function OrderHistoryPage() {
 	// const navigate = useNavigate();
@@ -37,7 +38,7 @@ export default function OrderHistoryPage() {
 							{orders!.map((order) => (
 								<tr key={order._id}>
 									<td className="order-id">
-										<a href={`/order/${order._id}`}>{order._id}</a>
+										<Link to={`/order/${order._id}`}>{order._id}</Link>
 									</td>
 									<td>{order.createdAt.substring(0, 10)}</td>
 									<td>{order.totalPrice.toFixed(2)}</td>
