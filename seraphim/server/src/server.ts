@@ -9,7 +9,7 @@ import bodyParser from "body-parser";
 
 //routes
 import { authRoute } from "./routes/auth";
-import { refreshRouter } from "./routes/refresh";
+// import { refreshRouter } from "./routes/refresh";
 import { logOutRouter } from "./routes/logout";
 import { userRouter } from "./routes/user";
 import productRouter from "./routes/products";
@@ -42,7 +42,7 @@ app.use(cookieParser());
 //router
 app.use("/users", userRouter);
 app.use("/auth", authRoute);
-app.use("/refresh", refreshRouter);
+// app.use("/refresh", refreshRouter);
 app.use("/signout", logOutRouter);
 app.use("/orders", orderRouter);
 app.use("/keys", keyRouter);

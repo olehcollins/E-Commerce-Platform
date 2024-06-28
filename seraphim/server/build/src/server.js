@@ -13,7 +13,7 @@ const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const body_parser_1 = __importDefault(require("body-parser"));
 //routes
 const auth_1 = require("./routes/auth");
-const refresh_1 = require("./routes/refresh");
+// import { refreshRouter } from "./routes/refresh";
 const logout_1 = require("./routes/logout");
 const user_1 = require("./routes/user");
 const products_1 = __importDefault(require("./routes/products"));
@@ -39,7 +39,7 @@ app.use((0, cookie_parser_1.default)());
 //router
 app.use("/users", user_1.userRouter);
 app.use("/auth", auth_1.authRoute);
-app.use("/refresh", refresh_1.refreshRouter);
+// app.use("/refresh", refreshRouter);
 app.use("/signout", logout_1.logOutRouter);
 app.use("/orders", orders_1.default);
 app.use("/keys", key_1.keyRouter);
