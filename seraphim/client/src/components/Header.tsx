@@ -133,8 +133,8 @@ const Header: React.FC<Props> = ({ themeSwitch, mode, cartItems, wishlist }) => 
 							<AdvancedImage cldImg={image} />
 
 							<div className="dropdown-content">
-								<a href="/orders">Order History</a>
-								<a href="customer/update">Edit Profile</a>
+								<Link to={"/orders"}>Order History</Link>
+								<Link to={"customer/update"}>Edit Profile</Link>
 							</div>
 						</div>
 					)}
